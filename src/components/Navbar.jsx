@@ -49,6 +49,7 @@ const Navbar = ({ toggleLang, langFile }) => {
             <TooltipBtn
               tooltip_text={langFile.accessibility}
               icon={faWheelchair}
+              tooltip_pos="top-[-1.4rem]"
             />
             <TooltipBtn
               tooltip_text={langFile.dark_mode}
@@ -56,10 +57,9 @@ const Navbar = ({ toggleLang, langFile }) => {
               click={toggleDarkMode}
             />
             <TooltipBtn
-              tooltip_text={langFile.lang_change}
-              text={langFile === pl_translation ? "EN" : "PL"}
-              click={toggleLang}
-              tooltip_pos="top-[-3.2rem]"
+                tooltip_text={langFile.lang_change}
+                text={langFile === pl_translation ? "EN" : "PL"}
+                click={toggleLang}
             />
           </ul>
         </div>

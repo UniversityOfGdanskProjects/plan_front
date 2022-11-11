@@ -10,8 +10,11 @@ const Navbar = () => {
         menu.current.classList.toggle('translate-x-[-100%]')
     }
 
+
     const toggleDarkMode = () => {
+        
         document.documentElement.classList.toggle('dark')
+        localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'))
         console.log(document.documentElement.classList)
     }
 

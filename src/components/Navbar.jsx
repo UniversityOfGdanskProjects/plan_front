@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { faBars, faCircleUser, faWheelchair, faMoon } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import TooltipBtn from './TooltipBtn'
 
 
 const Navbar = () => {
@@ -12,7 +13,6 @@ const Navbar = () => {
 
 
     const toggleDarkMode = () => {
-        
         document.documentElement.classList.toggle('dark')
         localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'))
         console.log(document.documentElement.classList)
@@ -20,7 +20,7 @@ const Navbar = () => {
 
     return (
     <>
-    <div ref={menu} className='fixed w-screen h-screen flex  top-0 left-0 p-0 m-0 translate-x-[-100%] transition-all'>
+    <div ref={menu} className='lg:hidden fixed w-screen h-screen flex  top-0 left-0 p-0 m-0 translate-x-[-100%] transition-all'>
         <div className='h-screen w-[60%] bg-secondaryLight dark:bg-secondaryDark'>
             <h1 className='text-primaryLight px-5 font-bold py-3'>Logo</h1>
             <nav className='text-textDark mt-5'>
@@ -30,42 +30,38 @@ const Navbar = () => {
                 </ul>
             </nav>
             <section id="accessibility" className='text-textDark fixed bottom-0 mb-2 flex items-center justify-evenly w-[60%]'>
-                {AccessibilityBtn("Dostępność", faWheelchair)}
-                {AccessibilityBtn("Ciemny motyw", faMoon,"",toggleDarkMode)}
-                {AccessibilityBtn("Język", null, "EN")}
+                <TooltipBtn tooltip_text="Zwiększanie czcionki" icon={faWheelchair} click={() => console.log('Zwiększanie czcionki')} />
+                <TooltipBtn tooltip_text="Zmiana kontrastu" icon={faMoon} click={toggleDarkMode} />
+                <TooltipBtn tooltip_text={'Zmiana języka'} text={'EN'} click={() => console.log('Zmiana języka')} />
             </section>
         </div>
         <div onClick={toggleMenu} className='w-[40%] bg-secondaryLight bg-opacity-40 dark:bg-opacity-40 dark:bg-secondaryDark backdrop-blur-[1px]'>
 
         </div>
     </div>
-    <header className='shadow flex bg-secondaryLight dark:bg-secondaryDark items-center p-4 justify-between'>
-        <nav>
-            <button onClick={toggleMenu} className="lg:hidden">
+    <header className='text-textDark shadow flex bg-secondaryLight dark:bg-secondaryDark items-center p-4 justify-between'>
+            <button onClick={toggleMenu} className="md:hidden">
                 <FontAwesomeIcon icon={faBars} className='text-xl text-primaryLight' />
                 </button>
+        <nav className='hidden md:block p-0 m-0'>
+            <ul className='flex m-0 p-0 items-center'>
+                <h1 className='font-bold mx-6'>Logo</h1>
+                {NavBarElement("Plan Zajęć", true, 'text-sm')}
+                {NavBarElement("Aktualności", false, 'text-sm')}
+            </ul>
         </nav>
         <div>
-            <FontAwesomeIcon icon={faCircleUser} className='text-xl text-primaryLight' />
+            <FontAwesomeIcon icon={faCircleUser} className='text-xl md:text-4xl text-primaryLight' />
         </div>
     </header>
     </>
   )
 
-    function AccessibilityBtn(tooltip_text, icon=null, text=null, click) {
-        return <>
-            <button onClick={click} className='group'>
-                {icon ? <FontAwesomeIcon icon={icon} /> : text}
-            <div className='absolute top-[-2rem] text-sm bg-primaryLight text-secondaryLight dark:text-secondaryDark rounded-md hidden group-active:block group-hover:block  p-1'>
-                {tooltip_text}
-            </div>
-            </button>
-        </>
-    }
 
-    function NavBarElement(text, current) {
+
+    function NavBarElement(text, current, text_size="text-lg") {
         return <>
-        <li className={`flex items-center justify-center p-3 ${current ? "bg-primaryLight text-secondaryLight dark:text-secondaryDark" : "cursor-pointer"} font-bold text-xl mx-6 rounded-md mt-5`}>{text}</li>
+        <li className={`flex items-center justify-center p-3 ${current ? "bg-primaryLight text-secondaryLight dark:text-secondaryDark" : "cursor-pointer"} font-bold ${text_size} mx-6 rounded-md `}>{text}</li>
         {current ? "" : <hr className='mx-6' />}
         </>
     }

@@ -6,7 +6,7 @@
 :root{
   font-family: 'Work Sans', sans-serif;
 }
-
 body{
   @apply bg-primaryLight dark:bg-primaryDark;
 }
+

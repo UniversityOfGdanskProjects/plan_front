@@ -1,10 +1,11 @@
 import './App.css'
-import HelloWorld from './components/HelloWorld'
+import Navbar from './components/Navbar'
+
 function App() {
 
   return (
-    <div className="">
-      <HelloWorld />
+    <div className="text-textLight dark:text-textDark">
+      <Navbar />
     </div>
   )
 }

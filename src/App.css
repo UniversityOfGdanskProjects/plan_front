@@ -1,3 +1,10 @@
 .tooltip-btn button{
     @apply active:text-secondaryLight dark:active:text-secondaryDark hover:text-secondaryLight dark:hover:text-secondaryDark active:bg-primaryLight hover:bg-primaryLight p-3 rounded-md w-10 h-10 flex items-center justify-center;
 }
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}

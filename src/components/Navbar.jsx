@@ -46,21 +46,28 @@ const Navbar = ({ toggleLang, langFile }) => {
             id="accessibility"
             className="text-textDark fixed bottom-0 mb-2 flex items-center justify-evenly w-[60%]"
           >
-            <TooltipBtn
-              tooltip_text={langFile.accessibility}
-              icon={faWheelchair}
-              tooltip_pos="top-[-1.4rem]"
-            />
-            <TooltipBtn
-              tooltip_text={langFile.dark_mode}
-              icon={faMoon}
-              click={toggleDarkMode}
-            />
-            <TooltipBtn
+            <li>
+              <TooltipBtn
+                tooltip_text={langFile.accessibility}
+                icon={faWheelchair}
+                tooltip_pos="top-[-1.4rem]"
+                />
+            </li>
+            <li>
+
+              <TooltipBtn
+                tooltip_text={langFile.dark_mode}
+                icon={faMoon}
+                click={toggleDarkMode}
+                />
+            </li>
+            <li>
+              <TooltipBtn
                 tooltip_text={langFile.lang_change}
                 text={langFile === pl_translation ? "EN" : "PL"}
                 click={toggleLang}
-            />
+              />
+            </li>
           </ul>
         </div>
         <div
@@ -69,7 +76,7 @@ const Navbar = ({ toggleLang, langFile }) => {
         ></div>
       </div>
       <header className="text-textDark shadow flex bg-secondaryLight dark:bg-secondaryDark items-center p-2 pl-3 justify-between">
-        <button title="Menu" onClick={toggleMenu} className="md:hidden">
+        <button type="button" title="Menu" onClick={toggleMenu} className="md:hidden">
           <FontAwesomeIcon
             icon={faBars}
             className="text-4xl text-primaryLight"
@@ -90,23 +97,31 @@ const Navbar = ({ toggleLang, langFile }) => {
         </nav>
         <div className="flex gap-5">
           <ul className="items-center gap-5 hidden md:flex justify-center">
-              <TooltipBtn
-                tooltip_text={langFile.accessibility}
-                icon={faWheelchair}
-                tooltip_pos="top-16"
-              />
-              <TooltipBtn
-                tooltip_text={langFile.dark_mode}
-                icon={faMoon}
-                click={toggleDarkMode}
-                tooltip_pos="top-16"
-              />
-              <TooltipBtn
-                tooltip_text={langFile.lang_change}
-                text={langFile === pl_translation ? "EN" : "PL"}
-                click={toggleLang}
-                tooltip_pos="top-16"
-              />
+              <li>
+
+                <TooltipBtn
+                  tooltip_text={langFile.accessibility}
+                  icon={faWheelchair}
+                  tooltip_pos="top-16"
+                />
+              </li>
+              <li>
+
+                <TooltipBtn
+                  tooltip_text={langFile.dark_mode}
+                  icon={faMoon}
+                  click={toggleDarkMode}
+                  tooltip_pos="top-16"
+                />
+              </li>
+              <li>
+                <TooltipBtn
+                  tooltip_text={langFile.lang_change}
+                  text={langFile === pl_translation ? "EN" : "PL"}
+                  click={toggleLang}
+                  tooltip_pos="top-16"
+                />
+              </li>
           </ul>
           <FontAwesomeIcon
             icon={faCircleUser}

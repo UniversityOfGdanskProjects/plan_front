@@ -41,7 +41,7 @@ const Navbar = () => {
     </div>
     <header className='shadow flex bg-secondaryLight dark:bg-secondaryDark items-center p-4 justify-between'>
         <nav>
-            <button onClick={toggleMenu}>
+            <button onClick={toggleMenu} className="lg:hidden">
                 <FontAwesomeIcon icon={faBars} className='text-xl text-primaryLight' />
                 </button>
         </nav>

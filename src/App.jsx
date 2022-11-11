@@ -10,8 +10,10 @@ function App() {
   const toggleLang = () => {
     if (langFile === pl_translation) {
       setLangFile(en_translation)
+      localStorage.setItem('lang', 'en')
     } else {
       setLangFile(pl_translation)
+      localStorage.setItem('lang', 'pl')
     }
   }
 
@@ -21,6 +23,12 @@ function App() {
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
+    }
+    const lang = localStorage.getItem('lang')
+    if (lang === 'en') {
+      setLangFile(en_translation)
+    } else {
+      setLangFile(pl_translation)
     }
   }, []) 
   return (

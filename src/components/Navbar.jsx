@@ -39,9 +39,9 @@ const Navbar = ({toggleLang, langFile}) => {
 
         </div>
     </div>
-    <header className='text-textDark shadow flex bg-secondaryLight dark:bg-secondaryDark items-center p-4 justify-between'>
+    <header className='text-textDark shadow flex bg-secondaryLight dark:bg-secondaryDark items-center p-2 pl-3 justify-between'>
             <button onClick={toggleMenu} className="md:hidden">
-                <FontAwesomeIcon icon={faBars} className='text-xl text-primaryLight' />
+                <FontAwesomeIcon icon={faBars} className='text-4xl text-primaryLight' />
                 </button>
         <nav className='hidden md:block p-0 m-0'>
             <ul className='flex m-0 p-0 items-center'>
@@ -56,7 +56,7 @@ const Navbar = ({toggleLang, langFile}) => {
             <TooltipBtn tooltip_text={langFile.dark_mode} icon={faMoon} click={toggleDarkMode} tooltip_pos="top-16" />
             <TooltipBtn tooltip_text={langFile.lang_change} text={langFile===pl_translation ? 'EN' : "PL"} click={toggleLang} tooltip_pos='top-16' />
             </section>
-            <FontAwesomeIcon icon={faCircleUser} className='text-xl md:text-4xl text-primaryLight' />
+            <FontAwesomeIcon icon={faCircleUser} className='text-4xl text-primaryLight' />
         </div>
     </header>
     </>

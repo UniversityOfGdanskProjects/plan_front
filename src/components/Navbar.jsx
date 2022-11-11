@@ -50,7 +50,12 @@ const Navbar = () => {
                 {NavBarElement("Aktualności", false, 'text-sm')}
             </ul>
         </nav>
-        <div>
+        <div className='flex gap-5'>
+            <section className='items-center gap-5 hidden md:flex justify-center'>
+            <TooltipBtn className="flex justify-center items-center w-10 h-10" tooltip_text="Zwiększanie czcionki" icon={faWheelchair} click={() => console.log('Zwiększanie czcionki')} tooltip_pos="16" />
+            <TooltipBtn tooltip_text="Zmiana kontrastu" icon={faMoon} click={toggleDarkMode} tooltip_pos="16" />
+            <TooltipBtn tooltip_text={'Zmiana języka'} text={'EN'} click={() => console.log('Zmiana języka')} tooltip_pos='16' />
+            </section>
             <FontAwesomeIcon icon={faCircleUser} className='text-xl md:text-4xl text-primaryLight' />
         </div>
     </header>

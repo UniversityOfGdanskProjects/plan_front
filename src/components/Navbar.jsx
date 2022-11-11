@@ -2,9 +2,10 @@ import React, { useRef } from 'react'
 import { faBars, faCircleUser, faWheelchair, faMoon } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TooltipBtn from './TooltipBtn'
+import { pl_translation } from '../assets/translations/pl'
 
 
-const Navbar = () => {
+const Navbar = ({toggleLang, langFile}) => {
     const menu = useRef()
 
     const toggleMenu = () => {
@@ -25,14 +26,14 @@ const Navbar = () => {
             <h1 className='text-primaryLight px-5 font-bold py-3'>Logo</h1>
             <nav className='text-textDark mt-5'>
                <ul className='text-center'>
-                    {NavBarElement("Plan Zajęć", true)}
-                    {NavBarElement("Aktualności", false)}
+                    {NavBarElement(langFile.schedule, true)}
+                    {NavBarElement(langFile.news, false)}
                 </ul>
             </nav>
             <section id="accessibility" className='text-textDark fixed bottom-0 mb-2 flex items-center justify-evenly w-[60%]'>
-                <TooltipBtn tooltip_text="Zwiększanie czcionki" icon={faWheelchair} click={() => console.log('Zwiększanie czcionki')} />
-                <TooltipBtn tooltip_text="Zmiana kontrastu" icon={faMoon} click={toggleDarkMode} />
-                <TooltipBtn tooltip_text={'Zmiana języka'} text={'EN'} click={() => console.log('Zmiana języka')} />
+                <TooltipBtn tooltip_text={langFile.accessibility} icon={faWheelchair} click={() => console.log('Zwiększanie czcionki')} />
+                <TooltipBtn tooltip_text={langFile.dark_mode} icon={faMoon} click={toggleDarkMode} />
+                <TooltipBtn tooltip_text={langFile.lang_change} text={langFile===pl_translation ? 'EN' : "PL"} click={toggleLang} />
             </section>
         </div>
         <div onClick={toggleMenu} className='w-[40%] bg-secondaryLight bg-opacity-40 dark:bg-opacity-40 dark:bg-secondaryDark backdrop-blur-[1px]'>
@@ -46,15 +47,15 @@ const Navbar = () => {
         <nav className='hidden md:block p-0 m-0'>
             <ul className='flex m-0 p-0 items-center'>
                 <h1 className='font-bold mx-6'>Logo</h1>
-                {NavBarElement("Plan Zajęć", true, 'text-sm')}
-                {NavBarElement("Aktualności", false, 'text-sm')}
+                {NavBarElement(langFile.schedule, true, 'text-sm')}
+                {NavBarElement(langFile.news, false, 'text-sm')}
             </ul>
         </nav>
         <div className='flex gap-5'>
             <section className='items-center gap-5 hidden md:flex justify-center'>
-            <TooltipBtn className="flex justify-center items-center w-10 h-10" tooltip_text="Zwiększanie czcionki" icon={faWheelchair} click={() => console.log('Zwiększanie czcionki')} tooltip_pos="16" />
-            <TooltipBtn tooltip_text="Zmiana kontrastu" icon={faMoon} click={toggleDarkMode} tooltip_pos="16" />
-            <TooltipBtn tooltip_text={'Zmiana języka'} text={'EN'} click={() => console.log('Zmiana języka')} tooltip_pos='16' />
+            <TooltipBtn className="flex justify-center items-center w-10 h-10" tooltip_text={langFile.accessibility} icon={faWheelchair} click={() => console.log('Zwiększanie czcionki')} tooltip_pos="16" />
+            <TooltipBtn tooltip_text={langFile.dark_mode} icon={faMoon} click={toggleDarkMode} tooltip_pos="16" />
+            <TooltipBtn tooltip_text={langFile.lang_change} text={langFile===pl_translation ? 'EN' : "PL"} click={toggleLang} tooltip_pos='16' />
             </section>
             <FontAwesomeIcon icon={faCircleUser} className='text-xl md:text-4xl text-primaryLight' />
         </div>

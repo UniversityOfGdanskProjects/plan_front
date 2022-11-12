@@ -144,6 +144,7 @@ const Navbar = ({ toggleLang, langFile }) => {
                 <button
                     type="button"
                     title={text}
+                    aria-label={current ? "Current Page" : ""}
                     className={`flex items-center justify-center p-3 ${
                         current
                             ? "bg-primaryLight text-secondaryLight dark:text-secondaryDark"

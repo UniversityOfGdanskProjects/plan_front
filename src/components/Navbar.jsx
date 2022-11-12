@@ -7,11 +7,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TooltipBtn from "./TooltipBtn";
-import { pl_translation } from "../assets/translations/pl";
 
 const Navbar = ({ toggleLang, langFile }) => {
     const menu = useRef();
     const menuBtn = useRef();
+
 
     const toggleMenu = () => {
         menu.current.classList.toggle("translate-x-[-100%]");
@@ -31,7 +31,8 @@ const Navbar = ({ toggleLang, langFile }) => {
                 ref={menu}
                 className="lg:hidden fixed w-screen h-screen flex  top-0 left-0 p-0 m-0 translate-x-[-100%] transition-all duration-300 ease-in-out"
             >
-                <div className="h-screen w-[60%] bg-secondaryLight dark:bg-secondaryDark">
+                <div role={"menu"} className="h-screen w-[60%] bg-secondaryLight dark:bg-secondaryDark">
+
                     <h1 className="text-primaryLight px-5 font-bold py-3">
                         Logo
                     </h1>
@@ -42,7 +43,6 @@ const Navbar = ({ toggleLang, langFile }) => {
                         </ul>
                     </div>
                     <ul
-                        id="accessibility"
                         className="text-textDark fixed bottom-0 mb-2 flex items-center justify-evenly w-[60%]"
                     >
                         <li>
@@ -62,7 +62,8 @@ const Navbar = ({ toggleLang, langFile }) => {
                         <li>
                             <TooltipBtn
                                 tooltip_text={langFile.lang_change}
-                                text={langFile === pl_translation ? "EN" : "PL"}
+                                text={localStorage.getItem('lang') != "en" ? "EN" : "PL"}
+
                                 click={toggleLang}
                             />
                         </li>
@@ -121,7 +122,8 @@ const Navbar = ({ toggleLang, langFile }) => {
                         <li>
                             <TooltipBtn
                                 tooltip_text={langFile.lang_change}
-                                text={langFile === pl_translation ? "EN" : "PL"}
+                                text={localStorage.getItem("lang") != "en" ? "EN" : "PL"}
+
                                 click={toggleLang}
                                 tooltip_pos="top-16"
                             />
@@ -139,18 +141,21 @@ const Navbar = ({ toggleLang, langFile }) => {
     function NavBarElement(text, current, text_size = "text-lg") {
         return (
             <>
-                <div role="navigation"
+                <div
+                    role="navigation"
                     tabIndex={0}
                     title={text}
                     aria-label={current ? "Current Page" : ""}
-                    className={`flex items-center justify-center p-3 ${current
+                    className={`flex items-center justify-center p-3 border-primaryLight my-3 md:my-0 ${
+                        current
                             ? "bg-primaryLight text-secondaryLight dark:text-secondaryDark"
-                            : "cursor-pointer"
-                        } font-bold ${text_size} mx-6 rounded-md `}
+                            : "cursor-pointer md:hover:bg-primaryLight md:hover:text-secondaryLight md:dark:hover:text-secondaryDark md:focus:bg-primaryLight md:focus:text-secondaryLight md:dark:focus:text-secondaryDark transition-all"
+                    } font-bold ${text_size} mx-6 rounded-md `}
                 >
                     {text}
                 </div>
-                {current ? "" : <hr className="mx-6" />}
+                <hr className="mx-12 h-[2px] rounded bg-primaryLight md:hidden opacity-80" />
+
             </>
         );
     }

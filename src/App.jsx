@@ -1,11 +1,20 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import Navbar from './components/Navbar'
-import { en_translation} from './assets/translations/en'
-import { pl_translation } from './assets/translations/pl'
+import { useEffect, useState } from "react";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import { en_translation } from "./assets/translations/en";
+import { pl_translation } from "./assets/translations/pl";
 function App() {
+    const [langFile, setLangFile] = useState(pl_translation);
 
-  const [langFile, setLangFile] = useState(pl_translation)
+    const toggleLang = () => {
+        if (langFile === pl_translation) {
+            setLangFile(en_translation);
+            localStorage.setItem("lang", "en");
+        } else {
+            setLangFile(pl_translation);
+            localStorage.setItem("lang", "pl");
+        }
+    };
 
   const toggleLang = () => {
     if (langFile === pl_translation) {
@@ -41,6 +50,7 @@ function App() {
       <Navbar toggleLang={toggleLang} langFile={langFile}/>
     </div>
   )
+
 }
 
-export default App
+export default App;

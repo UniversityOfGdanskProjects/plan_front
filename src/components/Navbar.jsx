@@ -35,12 +35,12 @@ const Navbar = ({ toggleLang, langFile }) => {
                     <h1 className="text-primaryLight px-5 font-bold py-3">
                         Logo
                     </h1>
-                    <nav className="text-textDark mt-5">
+                    <div role={"navigation"} className="text-textDark mt-5">
                         <ul className="text-center">
                             <li>{NavBarElement(langFile.schedule, true)}</li>
                             <li>{NavBarElement(langFile.news, false)}</li>
                         </ul>
-                    </nav>
+                    </div>
                     <ul
                         id="accessibility"
                         className="text-textDark fixed bottom-0 mb-2 flex items-center justify-evenly w-[60%]"
@@ -75,7 +75,7 @@ const Navbar = ({ toggleLang, langFile }) => {
                     className="w-[40%] bg-secondaryLight bg-opacity-40 dark:bg-opacity-40 dark:bg-secondaryDark backdrop-blur-[1px]"
                 ></button>
             </div>
-            <header className="text-textDark shadow flex bg-secondaryLight dark:bg-secondaryDark items-center p-2 pl-3 justify-between">
+            <nav className="text-textDark shadow flex bg-secondaryLight dark:bg-secondaryDark items-center p-2 pl-3 justify-between">
                 <button
                     ref={menuBtn}
                     type="button"
@@ -88,7 +88,7 @@ const Navbar = ({ toggleLang, langFile }) => {
                         className="text-4xl text-primaryLight"
                     />
                 </button>
-                <nav className="hidden md:block p-0 m-0">
+                <div role={"navigation"} className="hidden md:block p-0 m-0">
                     <ul className="flex m-0 p-0 items-center">
                         <li>
                             <h1 className="font-bold mx-6">Logo</h1>
@@ -100,7 +100,7 @@ const Navbar = ({ toggleLang, langFile }) => {
                             {NavBarElement(langFile.news, false, "text-sm")}
                         </li>
                     </ul>
-                </nav>
+                </div>
                 <div className="flex gap-5">
                     <ul className="items-center gap-5 hidden md:flex justify-center">
                         <li>
@@ -132,7 +132,7 @@ const Navbar = ({ toggleLang, langFile }) => {
                         className="text-4xl text-primaryLight"
                     />
                 </div>
-            </header>
+            </nav>
         </>
     );
 

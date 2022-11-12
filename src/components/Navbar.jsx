@@ -14,9 +14,7 @@ const Navbar = ({ toggleLang, langFile }) => {
     const menuBtn = useRef();
 
     const toggleMenu = () => {
-        menu.current.classList.toggle("translate-x-[-100%]");
-        menu.current.classList.toggle("hidden");
-        menuBtn.current.classList.toggle("hidden");
+      menu.current.classList.toggle("translate-x-[-100%]");
     };
 
     const toggleDarkMode = () => {
@@ -31,7 +29,7 @@ const Navbar = ({ toggleLang, langFile }) => {
         <>
             <div
                 ref={menu}
-                className="lg:hidden fixed w-screen h-screen flex  top-0 left-0 p-0 m-0 translate-x-[-100%] hidden transition-transform duration-300 ease-in-out"
+                className="lg:hidden fixed w-screen h-screen flex  top-0 left-0 p-0 m-0 translate-x-[-100%] transition-all duration-300 ease-in-out"
             >
                 <div className="h-screen w-[60%] bg-secondaryLight dark:bg-secondaryDark">
                     <h1 className="text-primaryLight px-5 font-bold py-3">

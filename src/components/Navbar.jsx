@@ -12,6 +12,7 @@ const Navbar = ({ toggleLang, langFile }) => {
     const menu = useRef();
     const menuBtn = useRef();
 
+
     const toggleMenu = () => {
         menu.current.classList.toggle("translate-x-[-100%]");
     };
@@ -31,6 +32,7 @@ const Navbar = ({ toggleLang, langFile }) => {
                 className="lg:hidden fixed w-screen h-screen flex  top-0 left-0 p-0 m-0 translate-x-[-100%] transition-all duration-300 ease-in-out"
             >
                 <div role={"menu"} className="h-screen w-[60%] bg-secondaryLight dark:bg-secondaryDark">
+
                     <h1 className="text-primaryLight px-5 font-bold py-3">
                         Logo
                     </h1>
@@ -61,6 +63,7 @@ const Navbar = ({ toggleLang, langFile }) => {
                             <TooltipBtn
                                 tooltip_text={langFile.lang_change}
                                 text={localStorage.getItem('lang') != "en" ? "EN" : "PL"}
+
                                 click={toggleLang}
                             />
                         </li>
@@ -120,6 +123,7 @@ const Navbar = ({ toggleLang, langFile }) => {
                             <TooltipBtn
                                 tooltip_text={langFile.lang_change}
                                 text={localStorage.getItem("lang") != "en" ? "EN" : "PL"}
+
                                 click={toggleLang}
                                 tooltip_pos="top-16"
                             />
@@ -151,6 +155,7 @@ const Navbar = ({ toggleLang, langFile }) => {
                     {text}
                 </div>
                 <hr className="mx-12 h-[2px] rounded bg-primaryLight md:hidden opacity-80" />
+
             </>
         );
     }

@@ -14,7 +14,7 @@ const Navbar = ({ toggleLang, langFile }) => {
     const menuBtn = useRef();
 
     const toggleMenu = () => {
-      menu.current.classList.toggle("translate-x-[-100%]");
+        menu.current.classList.toggle("translate-x-[-100%]");
     };
 
     const toggleDarkMode = () => {
@@ -139,18 +139,17 @@ const Navbar = ({ toggleLang, langFile }) => {
     function NavBarElement(text, current, text_size = "text-lg") {
         return (
             <>
-                <button
-                    type="button"
+                <div role="navigation"
+                    tabIndex={0}
                     title={text}
                     aria-label={current ? "Current Page" : ""}
-                    className={`flex items-center justify-center p-3 ${
-                        current
+                    className={`flex items-center justify-center p-3 ${current
                             ? "bg-primaryLight text-secondaryLight dark:text-secondaryDark"
                             : "cursor-pointer"
-                    } font-bold ${text_size} mx-6 rounded-md `}
+                        } font-bold ${text_size} mx-6 rounded-md `}
                 >
                     {text}
-                </button>
+                </div>
                 {current ? "" : <hr className="mx-6" />}
             </>
         );

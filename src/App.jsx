@@ -11,9 +11,12 @@ function App() {
     if (langFile === pl_translation) {
       setLangFile(en_translation)
       localStorage.setItem('lang', 'en')
+      // document.title = "Schedule"
     } else {
       setLangFile(pl_translation)
       localStorage.setItem('lang', 'pl')
+      // document.title = "Plan zajęć"
+      
     }
   }
 
@@ -27,8 +30,10 @@ function App() {
     const lang = localStorage.getItem('lang')
     if (lang === 'en') {
       setLangFile(en_translation)
+      // document.title = "Schedule"
     } else {
       setLangFile(pl_translation)
+      // document.title = "Plan zajęć"
     }
   }, []) 
   return (

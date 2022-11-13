@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import { en_translation } from './assets/translations/en';
 import { pl_translation } from './assets/translations/pl';
 import { Outlet } from 'react-router-dom';
+
 function App() {
   const [langFile, setLangFile] = useState(pl_translation);
 
@@ -27,8 +28,10 @@ function App() {
     const lang = localStorage.getItem('lang');
     if (lang === 'en') {
       setLangFile(en_translation);
+      // document.title = "Schedule"
     } else {
       setLangFile(pl_translation);
+      // document.title = "Plan zajęć"
     }
   }, []);
   return (

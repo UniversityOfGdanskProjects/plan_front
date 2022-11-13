@@ -1,13 +1,15 @@
-FROM node:16
+FROM node:16 as build-app
 
 WORKDIR /app
-
-ENV PATH /app/node_modules/.bin:$PATH
 
 COPY package.json ./
 COPY yarn.lock ./
 RUN yarn
-
 COPY . ./
+RUN npm run build
 
-CMD ["yarn", "dev", "--host"]
+FROM nginx
+COPY --from=build-app /app/dist/ /usr/share/nginx/html/
+COPY ./nginx/default.conf /etc/nginx/conf.d/
+EXPOSE 80
+

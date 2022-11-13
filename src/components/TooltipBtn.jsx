@@ -6,11 +6,8 @@ const TooltipBtn = ({
   icon = null,
   text = null,
   click,
-  size = "text-sm",
   tooltip_pos = "top-[-2.4rem]",
 }) => {
-  const tooltipId = useId();
-
   return (
     <div className="tooltip-btn">
       <button

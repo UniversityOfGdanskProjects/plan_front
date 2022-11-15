@@ -1,4 +1,4 @@
-export const en_translation = {
+{
     "schedule": "Schedule",
     "news": "News",
     "accessibility": "Accessibility",

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import {
   faBars,
   faCircleUser,
@@ -7,10 +7,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TooltipBtn from "./TooltipBtn";
+import { LanguageContext } from "../App";
 
-const Navbar = ({ toggleLang, langFile }) => {
+const Navbar = ({ toggleLang }) => {
   const menu = useRef();
-  const menuBtn = useRef();
+
+  const t = useContext(LanguageContext);
 
   const toggleMenu = () => {
     menu.current.classList.toggle("translate-x-[-100%]");
@@ -37,28 +39,28 @@ const Navbar = ({ toggleLang, langFile }) => {
           <h1 className="text-primaryLight px-5 font-bold py-3">Logo</h1>
           <div role={"navigation"} className="text-textDark mt-5">
             <ul className="text-center">
-              <li>{NavBarElement(langFile.schedule, true)}</li>
-              <li>{NavBarElement(langFile.news, false)}</li>
+              <li>{NavBarElement(t("schedule"), true)}</li>
+              <li>{NavBarElement(t("news"), false)}</li>
             </ul>
           </div>
           <ul className="text-textDark fixed bottom-0 mb-2 flex items-center justify-evenly w-[60%]">
             <li>
               <TooltipBtn
-                tooltip_text={langFile.accessibility}
+                tooltip_text={t("accessibility")}
                 icon={faWheelchair}
                 tooltip_pos="top-[-1.4rem]"
               />
             </li>
             <li>
               <TooltipBtn
-                tooltip_text={langFile.dark_mode}
+                tooltip_text={t("dark_mode")}
                 icon={faMoon}
                 click={toggleDarkMode}
               />
             </li>
             <li>
               <TooltipBtn
-                tooltip_text={langFile.lang_change}
+                tooltip_text={t("lang_change")}
                 text={localStorage.getItem("lang") != "en" ? "EN" : "PL"}
                 click={toggleLang}
               />
@@ -74,7 +76,6 @@ const Navbar = ({ toggleLang, langFile }) => {
       </div>
       <nav className="text-textDark shadow flex bg-secondaryLight dark:bg-secondaryDark items-center p-2 pl-3 justify-between">
         <button
-          ref={menuBtn}
           type="button"
           title="Menu"
           onClick={toggleMenu}
@@ -90,22 +91,22 @@ const Navbar = ({ toggleLang, langFile }) => {
             <li>
               <h1 className="font-bold mx-6">Logo</h1>
             </li>
-            <li>{NavBarElement(langFile.schedule, true, "text-sm")}</li>
-            <li>{NavBarElement(langFile.news, false, "text-sm")}</li>
+            <li>{NavBarElement(t("schedule"), true, "text-sm")}</li>
+            <li>{NavBarElement(t("news"), false, "text-sm")}</li>
           </ul>
         </div>
         <div className="flex gap-5">
           <ul className="items-center gap-5 hidden md:flex justify-center">
             <li>
               <TooltipBtn
-                tooltip_text={langFile.accessibility}
+                tooltip_text={t("accessibility")}
                 icon={faWheelchair}
                 tooltip_pos="top-16"
               />
             </li>
             <li>
               <TooltipBtn
-                tooltip_text={langFile.dark_mode}
+                tooltip_text={t("dark_mode")}
                 icon={faMoon}
                 click={toggleDarkMode}
                 tooltip_pos="top-16"
@@ -113,7 +114,7 @@ const Navbar = ({ toggleLang, langFile }) => {
             </li>
             <li>
               <TooltipBtn
-                tooltip_text={langFile.lang_change}
+                tooltip_text={t("lang_change")}
                 text={localStorage.getItem("lang") != "en" ? "EN" : "PL"}
                 click={toggleLang}
                 tooltip_pos="top-16"

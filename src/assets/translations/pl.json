@@ -1,4 +1,4 @@
-export const pl_translation = {
+{
     "schedule": "Plan Zajęć",
     "news": "Aktualności",
     "accessibility": "Dostępność",

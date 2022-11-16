@@ -30,7 +30,7 @@ const Navbar = ({ toggleLang }) => {
     <>
       <div
         ref={menu}
-        className="lg:hidden fixed w-screen h-screen flex  top-0 left-0 p-0 m-0 translate-x-[-100%] transition-all duration-300 ease-in-out"
+        className="z-30 md:hidden fixed w-screen h-screen flex  top-0 left-0 p-0 m-0 translate-x-[-100%] transition-all duration-300 ease-in-out"
       >
         <div
           role={"menu"}
@@ -141,10 +141,10 @@ const Navbar = ({ toggleLang }) => {
           className={`flex items-center justify-center p-3 border-primaryLight my-3 md:my-0 ${
             current
               ? "bg-primaryLight text-secondaryLight dark:text-secondaryDark"
-              : "cursor-pointer md:hover:bg-primaryLight md:hover:text-secondaryLight md:dark:hover:text-secondaryDark md:focus:bg-primaryLight md:focus:text-secondaryLight md:dark:focus:text-secondaryDark transition-all"
+              : "cursor-pointer md:hover:bg-primaryLight md:hover:text-secondaryLight md:dark:hover:text-secondaryDark  transition-all"
           } font-bold ${text_size} mx-6 rounded-md `}
         >
-          {text}
+          <h2>{text}</h2>
         </div>
         <hr className="mx-12 h-[2px] rounded bg-primaryLight md:hidden opacity-80" />
       </>

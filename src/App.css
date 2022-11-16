@@ -26,3 +26,15 @@ a {
   animation: splash 1s ease-in-out normal forwards;
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.date-ring{
+    animation: spin 10s linear infinite;
+}

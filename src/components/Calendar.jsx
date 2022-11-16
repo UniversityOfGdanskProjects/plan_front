@@ -73,11 +73,11 @@ const Calendar = () => {
       </div>
       <div className="grid grid-cols-7 text-center gap-3">
         {days.map((day) => (
-          <div key={day.toString()}>
+          <div key={day.toString()} className="relative">
             <button
               onClick={() => setSelectedDay(day)}
               type="button"
-              className={`relative w-10 h-10 rounded-full items-center flex justify-center mx-auto opacity-80 hover:opacity-100 transition-all dark:hover:outline-primaryLight hover:outline-secondaryLight hover:outline-dotted outline-offset-2 ${
+              className={`group relative w-10 h-10 rounded-full items-center flex justify-center mx-auto opacity-80 hover:opacity-100 transition-all ${
                 isToday(day)
                   ? "dark:bg-primaryLight bg-secondaryLight text-primaryLight  dark:text-secondaryDark outline-primaryLight"
                   : ""
@@ -88,6 +88,7 @@ const Calendar = () => {
                 "outline dark:outline-primaryLight outline-secondaryLight"
               }`}
             >
+              <div className="date-ring rounded-full absolute w-10 h-10 group-hover:outline-dashed group-hover:outline-primaryLight outline-offset-1"></div>
               {format(day, "d", { locale: pl })}
               <div className="hidden absolute right-1 top-2 bg-emerald-500 w-1 h-1 rounded-full"></div>
               <div className="hidden absolute right-2 top-2 bg-rose-500 w-1 h-1 rounded-full"></div>

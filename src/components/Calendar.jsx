@@ -72,14 +72,58 @@ const Calendar = () => {
 
   return (
     <div aria-label="Calendar" className="md:w-[60%]">
-      <div className="flex justify-between capitalize text-3xl mx-10 my-5">
-        <h2 className="flex gap-4">
-          <button className="capitalize opacity-80 hover:opacity-100">
-            {format(firstDayCurrentMonth, "MMM", { locale: pl })}
-          </button>
-          <button className="opacity-80 hover:opacity-100">
-            {format(firstDayCurrentMonth, "yyyy", { locale: pl })}
-          </button>
+      <div className="flex relative z-20 justify-between capitalize text-3xl mx-10 my-5">
+        <h2 className="gap-4 flex">
+          <div ref={monthModal} className="relative">
+            <button
+              onClick={() => setMonthsExpanded(!monthsExpanded)}
+              className="capitalize hover:opacity-100 opacity-80"
+            >
+              {format(firstDayCurrentMonth, "MMM", { locale: pl })}
+            </button>
+            {monthsExpanded && (
+              <div className="dropdown flex flex-col absolute bg-secondaryLight dark:bg-secondaryDark text-primaryLight dark:text-primaryLight rounded -translate-x-2">
+                {months.map((month) => (
+                  <span key={month}>
+                    <button
+                      onClick={() => {
+                        setCurrentMonth(format(month, "MMM-yyyy"));
+                        setMonthsExpanded(false);
+                      }}
+                      className="animate-none p-1 capitalize opacity-80 hover:opacity-100"
+                    >
+                      {format(month, "MMM", { locale: pl })}
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+          <div ref={yearModal} className="relative">
+            <button
+              onClick={() => setYearsExpanded(!yearsExpanded)}
+              className="capitalize hover:opacity-100 opacity-80"
+            >
+              {format(firstDayCurrentMonth, "yyyy", { locale: pl })}
+            </button>
+            {yearsExpanded && (
+              <div className="dropdown flex flex-col absolute bg-secondaryLight dark:bg-secondaryDark text-primaryLight rounded -translate-x-2">
+                {years.map((year) => (
+                  <span key={year}>
+                    <button
+                      onClick={() => {
+                        setCurrentMonth(format(year, "MMM-yyyy"));
+                        setYearsExpanded(false);
+                      }}
+                      className="animate-none p-1 capitalize opacity-80 hover:opacity-100"
+                    >
+                      {format(year, "yyyy", { locale: pl })}
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
         </h2>
         <div className="flex gap-4">
           <button onClick={PrevMonth}>
@@ -122,7 +166,7 @@ const Calendar = () => {
                 "outline dark:outline-primaryLight outline-secondaryLight"
               }`}
             >
-              <div className="date-ring rounded-full absolute w-10 h-10 group-hover:outline-dashed dark:group-hover:outline-primaryLight group-hover:outline-secondaryLight outline-offset-1"></div>
+              <div className="date-ring rounded-full absolute z-0 w-10 h-10 group-hover:outline-dashed group-hover:outline-secondaryLight dark:group-hover:outline-primaryLight outline-offset-1"></div>
               {format(day, "d", { locale: pl })}
               <div className="hidden absolute right-1 top-2 bg-emerald-500 w-1 h-1 rounded-full"></div>
               <div className="hidden absolute right-2 top-2 bg-rose-500 w-1 h-1 rounded-full"></div>

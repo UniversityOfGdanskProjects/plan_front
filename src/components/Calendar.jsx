@@ -1,4 +1,5 @@
 import {
+  faCalendarDay,
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
@@ -22,6 +23,7 @@ import {
   eachDayOfInterval,
   eachMonthOfInterval,
   eachYearOfInterval,
+  isSameYear,
 } from "date-fns/esm";
 import { pl } from "date-fns/locale";
 import React, { useRef, useState } from "react";
@@ -82,9 +84,16 @@ const Calendar = () => {
               {format(firstDayCurrentMonth, "MMM", { locale: pl })}
             </button>
             {monthsExpanded && (
-              <div className="dropdown flex flex-col absolute bg-secondaryLight dark:bg-secondaryDark text-primaryLight dark:text-primaryLight rounded -translate-x-2">
+              <div className="dropdown border-2 border-secondaryLight dark:border-none flex flex-col absolute bg-secondaryLight dark:bg-secondaryDark text-primaryLight -left-2 dark:text-primaryLight rounded">
                 {months.map((month) => (
-                  <span key={month}>
+                  <span
+                    key={month}
+                    className={
+                      (isSameMonth(month, today) &&
+                        "bg-primaryLight text-secondaryLight dark:border-none outline-2 outline-secondaryLight dark:text-secondaryDark") ||
+                      "border-b-2 border-primaryLight last:border-none"
+                    }
+                  >
                     <button
                       onClick={() => {
                         setCurrentMonth(format(month, "MMM-yyyy"));
@@ -107,9 +116,16 @@ const Calendar = () => {
               {format(firstDayCurrentMonth, "yyyy", { locale: pl })}
             </button>
             {yearsExpanded && (
-              <div className="dropdown flex flex-col absolute bg-secondaryLight dark:bg-secondaryDark text-primaryLight rounded -translate-x-2">
+              <div className="dropdown border-2 border-secondaryLight dark:border-none flex flex-col absolute bg-secondaryLight dark:bg-secondaryDark text-primaryLight rounded -left-2">
                 {years.map((year) => (
-                  <span key={year}>
+                  <span
+                    key={year}
+                    className={
+                      (isSameYear(year, today) &&
+                        "bg-primaryLight text-secondaryLight dark:text-secondaryDark") ||
+                      `border-primaryLight border-b-2 last:border-none`
+                    }
+                  >
                     <button
                       onClick={() => {
                         setCurrentMonth(format(year, "MMM-yyyy"));
@@ -126,6 +142,12 @@ const Calendar = () => {
           </div>
         </h2>
         <div className="flex gap-4">
+          <button onClick={() => setCurrentMonth(format(today, "MMM-yyyy"))}>
+            <FontAwesomeIcon
+              className="opacity-80 hover:opacity-100"
+              icon={faCalendarDay}
+            />
+          </button>
           <button onClick={PrevMonth}>
             <FontAwesomeIcon
               className="opacity-80 hover:opacity-100"

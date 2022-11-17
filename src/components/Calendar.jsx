@@ -25,9 +25,10 @@ import {
   eachYearOfInterval,
   isSameYear,
 } from "date-fns/esm";
-import { pl } from "date-fns/locale";
-import React, { useRef, useState } from "react";
+import { pl, enUS } from "date-fns/locale";
+import React, { useContext, useRef, useState } from "react";
 import useClickOutside from "../hooks/useClickOutside";
+import { LanguageContext } from "../App";
 
 const Calendar = () => {
   const today = startOfToday();
@@ -36,6 +37,8 @@ const Calendar = () => {
   const [monthsExpanded, setMonthsExpanded] = useState(false);
   const [yearsExpanded, setYearsExpanded] = useState(false);
 
+  const langContext = useContext(LanguageContext);
+  const lang = langContext("lang") == "pl" ? pl : enUS;
   const monthModal = useRef();
   const yearModal = useRef();
 
@@ -62,6 +65,11 @@ const Calendar = () => {
     end: add(today, { years: 2 }),
   });
 
+  const weekDays = eachDayOfInterval({
+    start: startOfWeek(firstDayCurrentMonth, { weekStartsOn: 1 }),
+    end: endOfWeek(firstDayCurrentMonth, { weekStartsOn: 1 }),
+  });
+
   const NextMonth = () => {
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
@@ -81,7 +89,7 @@ const Calendar = () => {
               onClick={() => setMonthsExpanded(!monthsExpanded)}
               className="capitalize hover:opacity-100 opacity-80"
             >
-              {format(firstDayCurrentMonth, "MMM", { locale: pl })}
+              {format(firstDayCurrentMonth, "MMM", { locale: lang })}
             </button>
             {monthsExpanded && (
               <div className="dropdown border-2 border-secondaryLight dark:border-none flex flex-col absolute bg-secondaryLight dark:bg-secondaryDark text-primaryLight -left-2 dark:text-primaryLight rounded">
@@ -89,9 +97,9 @@ const Calendar = () => {
                   <span
                     key={month}
                     className={
-                      (isSameMonth(month, today) &&
-                        "bg-primaryLight text-secondaryLight dark:border-none outline-2 outline-secondaryLight dark:text-secondaryDark") ||
-                      "border-b-2 border-primaryLight last:border-none"
+                      isSameMonth(month, today)
+                        ? "bg-primaryLight text-secondaryLight dark:border-none outline-2 outline-secondaryLight dark:text-secondaryDark"
+                        : "border-b-2 border-primaryLight last:border-none"
                     }
                   >
                     <button
@@ -101,7 +109,7 @@ const Calendar = () => {
                       }}
                       className="animate-none p-1 capitalize opacity-80 hover:opacity-100"
                     >
-                      {format(month, "MMM", { locale: pl })}
+                      {format(month, "MMM", { locale: lang })}
                     </button>
                   </span>
                 ))}
@@ -113,7 +121,7 @@ const Calendar = () => {
               onClick={() => setYearsExpanded(!yearsExpanded)}
               className="capitalize hover:opacity-100 opacity-80"
             >
-              {format(firstDayCurrentMonth, "yyyy", { locale: pl })}
+              {format(firstDayCurrentMonth, "yyyy", { locale: lang })}
             </button>
             {yearsExpanded && (
               <div className="dropdown border-2 border-secondaryLight dark:border-none flex flex-col absolute bg-secondaryLight dark:bg-secondaryDark text-primaryLight rounded -left-2">
@@ -121,9 +129,9 @@ const Calendar = () => {
                   <span
                     key={year}
                     className={
-                      (isSameYear(year, today) &&
-                        "bg-primaryLight text-secondaryLight dark:text-secondaryDark") ||
-                      `border-primaryLight border-b-2 last:border-none`
+                      isSameYear(year, today)
+                        ? "bg-primaryLight text-secondaryLight dark:text-secondaryDark"
+                        : "border-primaryLight border-b-2 last:border-none"
                     }
                   >
                     <button
@@ -133,7 +141,7 @@ const Calendar = () => {
                       }}
                       className="animate-none p-1 capitalize opacity-80 hover:opacity-100"
                     >
-                      {format(year, "yyyy", { locale: pl })}
+                      {format(year, "yyyy", { locale: lang })}
                     </button>
                   </span>
                 ))}
@@ -163,13 +171,11 @@ const Calendar = () => {
         </div>
       </div>
       <div className="grid grid-cols-7 text-center gap-3 mb-3 relative z-10">
-        <h3>PN</h3>
-        <h3>WT</h3>
-        <h3>ŚR</h3>
-        <h3>CZ</h3>
-        <h3>PT</h3>
-        <h3>SB</h3>
-        <h3>ND</h3>
+        {weekDays.map((day) => (
+          <h3 key={day} className="capitalize">
+            {format(day, "E", { locale: lang })}
+          </h3>
+        ))}
       </div>
       <div className="grid grid-cols-7 text-center gap-3 relative z-10">
         {days.map((day) => (

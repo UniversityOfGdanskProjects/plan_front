@@ -46,7 +46,14 @@ const Calendar = () => {
   return (
     <div aria-label="Calendar" className="md:w-[60%]">
       <div className="flex justify-between capitalize text-3xl mx-10 my-5">
-        <h2>{format(firstDayCurrentMonth, "MMM yyyy", { locale: pl })}</h2>
+        <h2 className="flex gap-4">
+          <button className="capitalize opacity-80 hover:opacity-100">
+            {format(firstDayCurrentMonth, "MMM", { locale: pl })}
+          </button>
+          <button className="opacity-80 hover:opacity-100">
+            {format(firstDayCurrentMonth, "yyyy", { locale: pl })}
+          </button>
+        </h2>
         <div className="flex gap-4">
           <button onClick={PrevMonth}>
             <FontAwesomeIcon
@@ -88,7 +95,7 @@ const Calendar = () => {
                 "outline dark:outline-primaryLight outline-secondaryLight"
               }`}
             >
-              <div className="date-ring rounded-full absolute w-10 h-10 group-hover:outline-dashed group-hover:outline-primaryLight outline-offset-1"></div>
+              <div className="date-ring rounded-full absolute w-10 h-10 group-hover:outline-dashed dark:group-hover:outline-primaryLight group-hover:outline-secondaryLight outline-offset-1"></div>
               {format(day, "d", { locale: pl })}
               <div className="hidden absolute right-1 top-2 bg-emerald-500 w-1 h-1 rounded-full"></div>
               <div className="hidden absolute right-2 top-2 bg-rose-500 w-1 h-1 rounded-full"></div>

@@ -18,7 +18,8 @@
     "js-cookie": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.3"
+    "react-router-dom": "^6.4.3",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",

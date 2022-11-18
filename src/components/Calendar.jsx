@@ -52,8 +52,8 @@ const Calendar = () => {
   let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
 
   const days = eachDayOfInterval({
-    start: startOfWeek(startOfMonth(firstDayCurrentMonth)),
-    end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
+    start: startOfWeek(startOfMonth(firstDayCurrentMonth), { weekStartsOn: 1 }),
+    end: endOfWeek(endOfMonth(firstDayCurrentMonth), { weekStartsOn: 1 }),
   });
 
   const months = eachMonthOfInterval({

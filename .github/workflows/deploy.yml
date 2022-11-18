@@ -31,5 +31,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: latest
+          tags: pselak/better-schedule:latest
           labels: ${{ steps.meta.outputs.labels }}

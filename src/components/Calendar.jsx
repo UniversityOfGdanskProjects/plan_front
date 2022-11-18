@@ -92,7 +92,7 @@ const Calendar = () => {
               {format(firstDayCurrentMonth, "MMM", { locale: lang })}
             </button>
             {monthsExpanded && (
-              <div className="dropdown border-2 border-secondaryLight dark:border-none flex flex-col absolute bg-secondaryLight dark:bg-secondaryDark text-primaryLight -left-2 dark:text-primaryLight rounded">
+              <div className="dropdown max-h-96 md:max-h-screen md:overflow-hidden overflow-auto border-2 border-secondaryLight dark:border-none flex flex-col absolute bg-secondaryLight dark:bg-secondaryDark dark:from-current dark:to-transparent text-primaryLight -left-2 dark:text-primaryLight rounded">
                 {months.map((month) => (
                   <span
                     key={month}
@@ -124,7 +124,7 @@ const Calendar = () => {
               {format(firstDayCurrentMonth, "yyyy", { locale: lang })}
             </button>
             {yearsExpanded && (
-              <div className="dropdown border-2 border-secondaryLight dark:border-none flex flex-col absolute bg-secondaryLight dark:bg-secondaryDark text-primaryLight rounded -left-2">
+              <div className="text-center dropdown border-2 border-secondaryLight dark:border-none flex flex-col absolute bg-secondaryLight dark:bg-secondaryDark text-primaryLight rounded -left-2">
                 {years.map((year) => (
                   <span
                     key={year}
@@ -191,11 +191,11 @@ const Calendar = () => {
               ${!isSameMonth(day, firstDayCurrentMonth) && "opacity-40"}
               ${
                 isEqual(day, selectedDay) &&
-                "outline dark:outline-primaryLight outline-secondaryLight"
+                "outline outline-offset-0 dark:outline-primaryLight outline-secondaryLight"
               }`}
             >
-              <div className="date-ring rounded-full absolute z-0 w-10 h-10 group-hover:outline-dashed group-hover:outline-secondaryLight dark:group-hover:outline-primaryLight outline-offset-1"></div>
-              {format(day, "d", { locale: pl })}
+              <div className="date-ring rounded-full absolute z-0 w-10 h-10 group-hover:outline-dashed group-hover:outline-secondaryLight dark:group-hover:outline-primaryLight outline-offset-0"></div>
+              {format(day, "d", { locale: lang })}
               <div className="hidden absolute right-1 top-2 bg-emerald-500 w-1 h-1 rounded-full"></div>
               <div className="hidden absolute right-2 top-2 bg-rose-500 w-1 h-1 rounded-full"></div>
               <div className="hidden absolute right-2 top-1 bg-cyan-500 w-1 h-1 rounded-full"></div>

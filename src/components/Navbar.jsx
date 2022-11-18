@@ -38,6 +38,7 @@ const Navbar = ({ toggleLang }) => {
 
   return (
     <>
+      {/* Mobile Menu */}
       {isExpanded && (
         <div
           ref={menu}
@@ -86,6 +87,7 @@ const Navbar = ({ toggleLang }) => {
           ></button>
         </div>
       )}
+      {/* Desktop Navbar */}
       <nav className="text-textDark shadow flex bg-secondaryLight dark:bg-secondaryDark items-center p-2 pl-3 justify-between">
         <button
           type="button"
@@ -153,7 +155,7 @@ const Navbar = ({ toggleLang }) => {
           className={`flex items-center justify-center p-3 border-primaryLight my-3 md:my-0 ${
             current
               ? "bg-primaryLight text-secondaryLight dark:text-secondaryDark"
-              : "cursor-pointer md:hover:bg-primaryLight md:hover:text-secondaryLight md:dark:hover:text-secondaryDark  transition-all"
+              : "cursor-pointer opacity-80 hover:opacity-100 hover:underline underline-offset-4 transition-all"
           } font-bold ${text_size} mx-6 rounded-md `}
         >
           <h2>{text}</h2>

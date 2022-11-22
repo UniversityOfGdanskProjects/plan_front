@@ -36,13 +36,22 @@ const Navbar = ({ toggleLang }) => {
     );
   };
 
+  window.addEventListener('resize', () => {
+    let vh = window.innerHeight * .01;
+    menu.current.style.setProperty('--vh', `${vh}xp`)
+  }
+  )
+
   return (
     <>
       {/* Mobile Menu */}
       {isExpanded && (
         <div
           ref={menu}
-          className="open-menu z-30 md:hidden fixed w-screen h-screen flex  top-0 left-0 p-0 m-0 transition-all duration-300 ease-in-out"
+          style={{
+            height:`${window.innerHeight}px`,
+          }}
+          className=" open-menu z-30 md:hidden fixed w-screen flex  top-0 left-0 p-0 m-0 transition-all duration-300 ease-in-out"
         >
           <div
             role={"menu"}

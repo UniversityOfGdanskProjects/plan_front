@@ -81,8 +81,8 @@ const Calendar = () => {
   };
 
   return (
-    <div aria-label="Calendar" className="md:w-[60%]">
-      <div className="flex relative z-20 justify-between capitalize text-3xl mx-10 my-5">
+    <div aria-label="Calendar" className="w-screen md:w-[60%] overflow-hidden">
+      <div className="flex relative z-20 justify-between capitalize text-2xl md:text-3xl mx-5 md:mx-10 my-5">
         <h2 className="gap-4 flex">
           <div ref={monthModal} className="relative">
             <button
@@ -170,20 +170,20 @@ const Calendar = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-7 text-center gap-3 mb-3 relative z-10">
+      <div className="grid grid-cols-7 text-center md:gap-3 mb-3 relative z-10">
         {weekDays.map((day) => (
-          <h3 key={day} className="capitalize">
+          <h3 key={day} className="capitalize text-sm md:text-lg m-0 p-0">
             {format(day, "E", { locale: lang })}
           </h3>
         ))}
       </div>
-      <div className="grid grid-cols-7 text-center gap-3 relative z-10">
+      <div className="grid grid-cols-7 text-center md:gap-3 relative z-10">
         {days.map((day) => (
           <div key={day.toString()} className="relative z-0">
             <button
               onClick={() => setSelectedDay(day)}
               type="button"
-              className={`group w-10 h-10 rounded-full items-center flex justify-center mx-auto opacity-80 hover:opacity-100 transition-all ${
+              className={`group w-10 h-10 rounded-full md:text-lg items-center flex justify-center mx-auto opacity-80 hover:opacity-100 transition-all ${
                 isToday(day)
                   ? "dark:bg-primaryLight bg-secondaryLight text-primaryLight  dark:text-secondaryDark outline-primaryLight"
                   : ""

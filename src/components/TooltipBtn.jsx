@@ -9,20 +9,20 @@ const TooltipBtn = ({
   tooltip_pos = "top-[-2.4rem]",
 }) => {
   return (
-    <div className="tooltip-btn">
+    <div className="tooltip-btn group">
       <button
         type="button"
         title={tooltip_text}
         onClick={click}
-        className="group p-0"
+        className="p-0"
       >
         {icon ? <FontAwesomeIcon icon={icon} /> : text}
-        <span
-          className={`${tooltip_pos} text-xs absolute  bg-primaryLight text-secondaryLight dark:text-secondaryDark md:bg-secondaryLight dark:md:bg-secondaryDark md:text-textDark dark:md:text-textDark rounded-md scale-0 group-focus:scale-100 group-hover:scale-100 px-2 w-[85px] transition-all`}
-        >
-          {tooltip_text}
-        </span>
       </button>
+      <span
+        className={`${tooltip_pos} text-xs absolute text-center translate-x-[-1.5rem] bg-primaryLight text-secondaryLight dark:text-secondaryDark md:bg-secondaryLight dark:md:bg-secondaryDark md:text-textDark dark:md:text-textDark rounded-md scale-0 group-focus:scale-100 group-hover:scale-100 px-2 w-[85px] transition-all`}
+      >
+        {tooltip_text}
+      </span>
     </div>
   );
 };

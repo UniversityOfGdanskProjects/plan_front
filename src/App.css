@@ -1,10 +1,80 @@
 .tooltip-btn button{
     @apply active:text-secondaryLight dark:active:text-secondaryDark hover:text-secondaryLight dark:hover:text-secondaryDark focus-within:text-secondaryLight dark:focus-within:text-secondaryDark active:bg-primaryLight hover:bg-primaryLight focus-within:bg-primaryLight p-3 rounded-md w-10 h-10 flex items-center justify-center transition-all;
 }
+@keyframes splash {
+    from {
+        opacity: 0;
+        transform: scale(0, 0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1, 1.1);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+h1,
+h2,
+h3,
 input,
 textarea,
 button,
 select,
 a {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  animation: splash 1s ease-in-out normal forwards;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes open-menu{
+  from{
+    transform: translateX(-100%);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+@keyframes close-menu{
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes drop-down{
+  from{
+    transform: scaleY(0);
+  }
+  to{
+    transform: scaleY(1); 
+  }
+}
+
+
+
+.date-ring{
+    animation: spin 10s linear infinite;
+}
+
+.open-menu{
+    animation: open-menu 0.5s ease-in-out normal forwards;
+}
+
+.close-menu{
+    animation: close-menu 0.5s ease-in-out normal forwards;
+}
+.dropdown{
+  transform-origin: top;
+  animation: drop-down 0.3s ease-out normal forwards;
 }

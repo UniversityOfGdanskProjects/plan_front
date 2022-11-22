@@ -81,7 +81,7 @@ const Calendar = () => {
   };
 
   return (
-    <div aria-label="Calendar" className="w-screen md:w-[60%] overflow-hidden">
+    <div aria-label="Calendar" className="w-screen md:w-[60%]">
       <div className="flex relative z-20 justify-between capitalize text-2xl md:text-3xl mx-5 md:mx-10 my-5">
         <h2 className="gap-4 flex">
           <div ref={monthModal} className="relative">

@@ -4,5 +4,8 @@
     "news": "Aktualności",
     "accessibility": "Dostępność",
     "dark_mode": "Zmień motyw",
-    "lang_change": "Zmień język"
+    "lang_change": "Zmień język",
+    "next_month": "Następny miesiąc",
+    "prev_month": "Poprzedni miesiąc",
+    "today": "Dzisiaj"
 }

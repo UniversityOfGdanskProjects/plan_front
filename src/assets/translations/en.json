@@ -4,5 +4,8 @@
     "news": "News",
     "accessibility": "Accessibility",
     "dark_mode": "Change theme",
-    "lang_change": "Change language"
+    "lang_change": "Change language",
+    "next_month": "Next month",
+    "previous_month": "Previous month",
+    "today": "Today"
 }

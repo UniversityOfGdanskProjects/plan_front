@@ -37,8 +37,8 @@ const Calendar = () => {
   const [monthsExpanded, setMonthsExpanded] = useState(false);
   const [yearsExpanded, setYearsExpanded] = useState(false);
 
-  const langContext = useContext(LanguageContext);
-  const lang = langContext("lang") == "pl" ? pl : enUS;
+  const t = useContext(LanguageContext);
+  const lang = t("lang") == "pl" ? pl : enUS;
   const monthModal = useRef();
   const yearModal = useRef();
 
@@ -150,19 +150,22 @@ const Calendar = () => {
           </div>
         </h2>
         <div className="flex gap-4">
-          <button onClick={() => setCurrentMonth(format(today, "MMM-yyyy"))}>
+          <button
+            onClick={() => setCurrentMonth(format(today, "MMM-yyyy"))}
+            title={t("today")}
+          >
             <FontAwesomeIcon
               className="opacity-80 hover:opacity-100"
               icon={faCalendarDay}
             />
           </button>
-          <button onClick={PrevMonth}>
+          <button onClick={PrevMonth} title={t("prev_month")}>
             <FontAwesomeIcon
               className="opacity-80 hover:opacity-100"
               icon={faChevronLeft}
             />
           </button>
-          <button onClick={NextMonth}>
+          <button onClick={NextMonth} title={t("next_month")}>
             <FontAwesomeIcon
               className="opacity-80 hover:opacity-100"
               icon={faChevronRight}

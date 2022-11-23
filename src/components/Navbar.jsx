@@ -36,12 +36,6 @@ const Navbar = ({ toggleLang }) => {
     );
   };
 
-  window.addEventListener('resize', () => {
-    let vh = window.innerHeight * .01;
-    menu.current.style.setProperty('--vh', `${vh}xp`)
-  }
-  )
-
   return (
     <>
       {/* Mobile Menu */}
@@ -49,7 +43,7 @@ const Navbar = ({ toggleLang }) => {
         <div
           ref={menu}
           style={{
-            height:`${window.innerHeight}px`,
+            height: `${window.innerHeight}px`,
           }}
           className=" open-menu z-30 md:hidden fixed w-screen flex  top-0 left-0 p-0 m-0 transition-all duration-300 ease-in-out"
         >
@@ -82,7 +76,7 @@ const Navbar = ({ toggleLang }) => {
               <li>
                 <TooltipBtn
                   tooltip_text={t("lang_change")}
-                  text={localStorage.getItem("lang") != "en" ? "EN" : "PL"}
+                  text={t("lang") != "en" ? "EN" : "PL"}
                   click={toggleLang}
                 />
               </li>
@@ -138,7 +132,7 @@ const Navbar = ({ toggleLang }) => {
             <li>
               <TooltipBtn
                 tooltip_text={t("lang_change")}
-                text={localStorage.getItem("lang") != "en" ? "EN" : "PL"}
+                text={t("lang") != "en" ? "EN" : "PL"}
                 click={toggleLang}
                 tooltip_pos="top-16"
               />

@@ -4,6 +4,7 @@ import App from "./App";
 import "./index.css";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import Calendar from "./components/Calendar";
+import WelcomePage from "./components/WelcomePage";
 
 const router = createBrowserRouter([
   {
@@ -15,12 +16,16 @@ const router = createBrowserRouter([
         element: "Aktualnosci",
       },
       {
-        path: "",
+        path: "kalendarz",
         element: <Calendar />,
       },
       {
         path: "profil",
         element: "Profil",
+      },
+      {
+        path: "",
+        element: <WelcomePage />,
       },
     ],
   },

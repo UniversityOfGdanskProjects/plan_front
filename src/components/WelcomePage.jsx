@@ -21,8 +21,16 @@ const WelcomePage = () => {
         <div className="flex flex-row items-center justify-center gap-14 text-textLight">
           {/* <button className="text-xl">{t("login")}</button>
           <button className="text-xl">{t("register")}</button> */}
-          <MvBtn text={t("login")} click={handleLogin}></MvBtn>
-          <MvBtn text={t("register")} click={handleRegister}></MvBtn>
+          <MvBtn
+            tooltip_text={t("login")}
+            text={t("login")}
+            click={handleLogin}
+          ></MvBtn>
+          <MvBtn
+            tooltip_text={t("register")}
+            text={t("register")}
+            click={handleRegister}
+          ></MvBtn>
         </div>
 
         <button> {t("not_registered")} </button>

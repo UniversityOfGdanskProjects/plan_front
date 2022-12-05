@@ -28,12 +28,15 @@ const WelcomePage = () => {
           ></MvBtn>
           <MvBtn
             tooltip_text={t("register")}
-            text={t("register")}
+            text={t("signup")}
             click={handleRegister}
           ></MvBtn>
         </div>
-
-        <button> {t("not_registered")} </button>
+        <div className="h-10">
+          <button className="hover:text-lg active:text-lg">
+            {t("not_registered")}
+          </button>
+        </div>
       </div>
     </div>
   );

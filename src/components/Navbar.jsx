@@ -42,7 +42,10 @@ const Navbar = ({ toggleLang }) => {
       {isExpanded && (
         <div
           ref={menu}
-          className="open-menu z-30 md:hidden fixed w-screen h-screen flex  top-0 left-0 p-0 m-0 transition-all duration-300 ease-in-out"
+          style={{
+            height: `${window.innerHeight}px`,
+          }}
+          className=" open-menu z-30 md:hidden fixed w-screen flex  top-0 left-0 p-0 m-0 transition-all duration-300 ease-in-out"
         >
           <div
             role={"menu"}
@@ -73,7 +76,7 @@ const Navbar = ({ toggleLang }) => {
               <li>
                 <TooltipBtn
                   tooltip_text={t("lang_change")}
-                  text={localStorage.getItem("lang") != "en" ? "EN" : "PL"}
+                  text={t("lang") != "en" ? "EN" : "PL"}
                   click={toggleLang}
                 />
               </li>
@@ -129,7 +132,7 @@ const Navbar = ({ toggleLang }) => {
             <li>
               <TooltipBtn
                 tooltip_text={t("lang_change")}
-                text={localStorage.getItem("lang") != "en" ? "EN" : "PL"}
+                text={t("lang") != "en" ? "EN" : "PL"}
                 click={toggleLang}
                 tooltip_pos="top-16"
               />

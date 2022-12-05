@@ -80,8 +80,8 @@ a {
 }
 
 .label{
-  @apply w-fit text-primaryLight dark:text-primaryDark text-lg font-bold mb-2  ml-2;
+  @apply w-fit text-primaryLight text-lg font-bold mb-1  ml-2;
 }
 .input{
-  @apply w-fit h-10 rounded-md border-2 border-primaryLight dark:border-primaryDark focus:outline-none focus:border-secondaryLight dark:focus:border-secondaryDark p-2 ;
+  @apply w-fit h-10 rounded-md border-2 dark:bg-primaryDark mb-3 border-primaryLight dark:border-primaryDark focus:outline-none focus:border-secondaryLight dark:focus:border-secondaryDark p-2 ;
 }

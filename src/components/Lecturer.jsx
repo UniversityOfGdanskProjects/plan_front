@@ -16,10 +16,10 @@ function Lecturer() {
   }
 
   return (
-    <div className="container mx-auto  rounded md:w-fit m-3">
+    <div className="container mx-auto rounded md:w-fit m-3">
     <form className='grid md:grid-cols-2 lg:grid-cols-3 items-center grid-flow-row gap-4'>
         {schedule.map((item, i) => (
-          <div className="mt-5 mx-auto w-fit bg-secondaryLight text-middle rounded-lg shadow p-6 flex-col flex justify-evenly align-center" key={i}>
+          <div className="mt-5 mx-auto w-fit bg-secondaryLight dark:bg-secondaryDark dark:border-2 dark:border-primaryLight text-middle rounded-lg shadow p-6 flex-col flex justify-evenly align-center" key={i}>
             <label className="label" htmlFor={`day-${i}`}>
               Day
             </label>

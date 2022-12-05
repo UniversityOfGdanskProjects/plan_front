@@ -31,7 +31,7 @@ const WelcomePage = () => {
           ></MvBtn>
         </div>
         <div className="h-10">
-          <button className="hover:text-lg active:text-lg text-textBlue">
+          <button className="hover:text-lg active:text-lg text-textBlue dark:text-primaryLight">
             {t("not_registered")}
           </button>
         </div>

@@ -6,12 +6,12 @@
        p-3 rounded-md w-10 h-10 flex items-center justify-center transition-all;
 }
 .mv-btn button{
-  @apply border-textLight rounded-xl border-2
+  @apply border-secondaryLight rounded-xl border-2
   dark:border-primaryLight dark:rounded-xl dark:border-2
    dark:text-primaryLight active:text-primaryLight dark:active:text-primaryDark
    hover:text-primaryLight dark:hover:text-primaryDark
     focus-within:text-primaryLight dark:focus-within:text-primaryDark
-     active:bg-textLight hover:bg-textLight focus-within:bg-textLight
+     active:bg-secondaryLight hover:bg-secondaryLight focus-within:bg-textLight
      dark:active:bg-primaryLight dark:hover:bg-primaryLight dark:focus-within:bg-primaryLight
     p-3 w-32 h-auto flex items-center justify-center transition-all;
 }

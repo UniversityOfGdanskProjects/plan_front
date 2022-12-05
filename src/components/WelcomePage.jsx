@@ -18,9 +18,7 @@ const WelcomePage = () => {
         <h2 className="text-6xl"> {t("schedule")}</h2>
       </div>
       <div className="flex flex-col items-center justify-center w-full h-1/5 gap-2">
-        <div className="flex flex-row items-center justify-center gap-14 text-textLight">
-          {/* <button className="text-xl">{t("login")}</button>
-          <button className="text-xl">{t("register")}</button> */}
+        <div className="flex flex-row items-center justify-center gap-14 text-secondaryLight ">
           <MvBtn
             tooltip_text={t("login")}
             text={t("login")}
@@ -33,7 +31,7 @@ const WelcomePage = () => {
           ></MvBtn>
         </div>
         <div className="h-10">
-          <button className="hover:text-lg active:text-lg">
+          <button className="hover:text-lg active:text-lg text-textBlue">
             {t("not_registered")}
           </button>
         </div>

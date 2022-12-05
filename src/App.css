@@ -78,3 +78,10 @@ a {
   transform-origin: top;
   animation: drop-down 0.3s ease-out normal forwards;
 }
+
+.label{
+  @apply w-fit text-primaryLight dark:text-primaryDark text-lg font-bold mb-2  ml-2;
+}
+.input{
+  @apply w-fit h-10 rounded-md border-2 border-primaryLight dark:border-primaryDark focus:outline-none focus:border-secondaryLight dark:focus:border-secondaryDark p-2 ;
+}

@@ -5,6 +5,10 @@
     "accessibility": "Accessibility",
     "dark_mode": "Change theme",
     "lang_change": "Change language",
+    "login": "Sign in",
+    "signup": "Sign up",
+    "ug": "University of Gdańsk",
+    "not_registered": "unregistered user"
     "next_month": "Next month",
     "previous_month": "Previous month",
     "today": "Today"

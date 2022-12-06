@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { filterData } from "../utils/filterData";
 
-function Lecturer() {
+const Lecturer = () => {
   const [schedule, setSchedule] = useState([
     {
       id: 1,
@@ -71,41 +72,9 @@ function Lecturer() {
     updatedSchedule[i][e.target.name] = e.target.value;
     setSchedule(updatedSchedule);
   }
+
   useEffect(() => {
-    const groups = schedule.reduce((acc, item) => {
-      const group = item[filterBy];
-
-      if (!acc[group]) {
-        acc[group] = [item];
-      } else {
-        acc[group].push(item);
-      }
-      return acc;
-    }, {});
-
-    const groupNames = Object.keys(groups);
-    setGroupElements(
-      groupNames.map((groupName, j) => {
-        const group = groups[groupName];
-        const groupElements = group.map((item, i) => (
-          <FormItem
-            id={item.id}
-            handleChange={handleChange}
-            i={i}
-            key={i}
-            schedule={schedule}
-          />
-        ));
-        return (
-          <section key={j} className="mb-4">
-            <h2 className="text-3xl font-bold">{groupName}</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 items-center grid-flow-row gap-4">
-              {groupElements}
-            </div>
-          </section>
-        );
-      })
-    );
+    setGroupElements(filterData(schedule, filterBy, FormItem, handleChange));
   }, [filterBy, schedule]);
 
   return (

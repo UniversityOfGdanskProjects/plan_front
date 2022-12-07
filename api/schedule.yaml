@@ -11,15 +11,15 @@ paths:
       description: Fetch plan for the whole year of UG IP
       operationId: getScheduleForSpecificYear
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Schedule'          
-        '400':
+                $ref: "#/components/schemas/Schedule"
+        "400":
           description: Invalid ID supplied
-        '404':
+        "404":
           description: Schedule not found
 
   /year/{yearId}/group/{groupId}:
@@ -28,17 +28,17 @@ paths:
       description: Fetch plan for the specific group of UG IP
       operationId: getScheduleForGroup
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Schedule'
-        '400':
+                $ref: "#/components/schemas/Schedule"
+        "400":
           description: Invalid ID supplied
-        '404':
+        "404":
           description: Schedule not found
-  
+
 components:
   schemas:
     Schedule:

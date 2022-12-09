@@ -11,16 +11,52 @@ paths:
       description: Fetch plan for the whole year of UG IP
       operationId: getScheduleForSpecificYear
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Schedule'          
-        '400':
+                $ref: "#/components/schemas/Schedule"
+        "400":
           description: Invalid ID supplied
-        '404':
-          description: Schedule not found
+        "404":
+          description: ID not found
+
+    put:
+      security:
+        - bearerAuth: []
+      summary: Upsert plan for the whole year
+      description: Upsert plan for the whole year of UG IP
+      operationId: upsertScheduleForSpecificYear
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Schedule"
+      responses:
+        "204":
+          description: Successful operation
+        "400":
+          description: Invalid schedule
+        "401":
+          description: Insufficient permission
+        "404":
+          description: ID not found
+
+    delete:
+      security:
+        - bearerAuth: []
+      summary: Delete plan for the whole year
+      description: Delete plan for the whole year of UG IP
+      operationId: deleteScheduleForSpecificYear
+      responses:
+        "204":
+          description: Successful operation
+        "401":
+          description: Insufficient permission
+        "404":
+          description: ID not found
 
   /year/{yearId}/group/{groupId}:
     get:
@@ -28,18 +64,120 @@ paths:
       description: Fetch plan for the specific group of UG IP
       operationId: getScheduleForGroup
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Schedule'
-        '400':
+                $ref: "#/components/schemas/Schedule"
+        "400":
           description: Invalid ID supplied
-        '404':
+        "404":
           description: Schedule not found
-  
+
+    put:
+      security:
+        - bearerAuth: []
+      summary: Upsert plan for the specific group
+      description: Upsert plan for the specific group of UG IP
+      operationId: upsertScheduleForSpecificGroup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Schedule"
+      responses:
+        "204":
+          description: Successful operation
+        "400":
+          description: Invalid schedule
+        "401":
+          description: Insufficient permission
+        "404":
+          description: ID not found
+
+    delete:
+      security:
+        - bearerAuth: []
+      summary: Delete plan for the specific group
+      description: Delete plan for the specific group of UG IP
+      operationId: deleteScheduleForSpecificGroup
+      responses:
+        "204":
+          description: Successful operation
+        "401":
+          description: Insufficient permission
+        "404":
+          description: ID not found
+
+  /year/{yearId}/group/{groupId}/user/{userID}:
+    get:
+      security:
+        - bearerAuth: []
+      summary: Fetch plan for the specific user
+      description: Fetch plan for the specific user of UG IP
+      operationId: getScheduleForUser
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Schedule"
+        "400":
+          description: Invalid ID supplied
+        "401":
+          description: Unauthorized error
+        "404":
+          description: Schedule not found
+
+    put:
+      security:
+        - bearerAuth: []
+      summary: Upsert plan for the user
+      description: Upsert plan for the user
+      operationId: upsertScheduleForYear
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Schedule"
+      responses:
+        "204":
+          description: Successful operation
+        "400":
+          description: Invalid schedule
+        "401":
+          description: Insufficient permission
+        "404":
+          description: ID not found
+
+    delete:
+      security:
+        - bearerAuth: []
+      summary: Delete plan for the user
+      description: Delete plan for the user
+      operationId: deleteScheduleForUser
+      responses:
+        "204":
+          description: Successful operation
+        "401":
+          description: Insufficient permission
+        "404":
+          description: ID not found
+
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
   schemas:
     Schedule:
       type: object
+      # Schedule as json object in form of { <date>: [{id: 102020, name: lecture1, start_hour: 10:00
+      #                                           end_hour: 12:00}]}
+      # remember that date is given in format dd-mm-yyyy

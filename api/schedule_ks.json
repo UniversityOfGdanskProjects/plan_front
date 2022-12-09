@@ -1,0 +1,35 @@
+{
+    "year": "2020/2021",
+    "semester": "1",
+    "schedule": {
+        "Monday": {
+            "8:00": {
+                "group": 1,
+                "subject": "matematyka elementarna",
+                "teacher": "rosicka monika",
+                "room": "3.11",
+                "endHour": "9:30"
+            },
+            "9:30": {
+                "group": 1,
+                "subject": "matematyka elementarna",
+                "teacher": "rosicka monika",
+                "room": "3.11",
+                "endHour": "11:00"
+            }
+        }
+        },
+        "Thursday": {
+
+        },
+        "Wednesday": {
+
+        },
+        "Tuesday": {
+
+        },
+        "Friday": {
+
+        }
+    }
+}

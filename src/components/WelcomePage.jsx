@@ -14,7 +14,7 @@ const WelcomePage = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-col items-center justify-center gap-10">
-        <h1 className="text-8xl "> {t("ug")} </h1>
+        <h1 className="text-8xl "> {t("uv")} </h1>
         <h2 className="text-6xl"> {t("schedule")}</h2>
       </div>
       <div className="flex flex-col items-center justify-center w-full h-1/5 gap-2">

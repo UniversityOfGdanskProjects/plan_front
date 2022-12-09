@@ -1,5 +1,7 @@
 import React from "react";
 
-const SubjectCard = () => {
+const SubjectCard = ({ lesson }) => {
   return <div></div>;
 };
+
+export default SubjectCard;

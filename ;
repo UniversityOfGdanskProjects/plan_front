@@ -66,29 +66,15 @@ const Lecturer = () => {
   ]);
   const [filterBy, setFilterBy] = useState("group");
   const [groupElements, setGroupElements] = useState([]);
-  const [editableItems, setEditableItems] = useState([]);
 
   function handleChange(e, i) {
     const updatedSchedule = [...schedule];
     updatedSchedule[i][e.target.name] = e.target.value;
-    updatedSchedule.forEach((item) => {
-      if (editableItems.includes(item.id)) {
-        item[e.target.name] = e.target.value;
-      }
-    });
     setSchedule(updatedSchedule);
   }
 
-  const addToEditable = (id) => {
-    if (!editableItems.includes(id)) {
-      setEditableItems((prev) => [...prev, id]);
-    }else{
-      setEditableItems((prev) => prev.filter((i) => i !== id));
-    }
-  }
-
   useEffect(() => {
-    setGroupElements(filterData(schedule, filterBy, {Component: FormItem, handleChange, addToEditable}));
+    setGroupElements(filterData(schedule, filterBy, {Component: FormItem, handleChange}));
   }, [filterBy, schedule]);
 
   return (
@@ -96,7 +82,7 @@ const Lecturer = () => {
       <div className="w-fit mx-auto">
         <nav className="flex gap-5 border-2 border-secondaryLight dark:border-secondaryDark rounded p-4">
           <button
-            className={`border-r-2 pr-4 border-secondaryLight p-2 dark:border-secondaryDark hover:underline ${
+            className={`border-r-2 pr-4 border-secondaryLight p-2 dark:border-secondaryDark hover:underline rounded ${
               filterBy === "day" && "underline"
             }`}
             onClick={() => setFilterBy("day")}
@@ -127,49 +113,92 @@ const Lecturer = () => {
 };
 
 export default Lecturer;
-const InputItem = ({ name, handleChange, i, item, type="text", show_label=true, checked}) => {
-  return (
-    <>
-    {show_label && <label className="capitalize label" htmlFor={`day-${i}`}>
-      {name}
-      </label>
-    }
-      <input
-        disabled={!checked}
-        className="input"
-        type={type}
-        name={name}
-        id={`${name}-${i}`}
-        value={item[name]}
-        onChange={(e) => handleChange(e, i)}
-      />
-    </>
-  );
-};
-const FormItem = ({ id, i, handleChange, schedule, addToEditable }) => {
+
+const FormItem = ({ id, i, handleChange, schedule }) => {
   const item = schedule.find((i) => i.id === id);
-  const [checked, setChecked] = useState(false);
-  const onCheck = () => {
-    setChecked(!checked);
-    addToEditable(item.id);
-  }
   return (
     <div
       className="mt-5 mx-auto w-fit bg-secondaryLight dark:bg-secondaryDark dark:border-2 dark:border-primaryLight text-middle rounded-lg shadow p-6 flex-col flex relative justify-evenly align-center"
       key={i}
     >
-      <input type="checkbox" checked={checked} onChange={() => onCheck()} className="absolute top-2 right-2 border-none bg-primaryLight w-7 h-7 "></input>
-      <InputItem name="day" handleChange={handleChange} i={i} item={item} checked={checked}/>
-      <h1 className="text-primaryLight pl-2 text-lg font-bold">Time</h1>
-      <div className="flex">
-        <InputItem name={"startTime"} show_label={false} type="time" handleChange={handleChange} checked={checked} i={i} item={item}/>
-        <h1 className="text-primaryLight m-2">-</h1>
-        <InputItem name="endTime" type="time" show_label={false} handleChange={handleChange} checked={checked} i={i} item={item}/>
+      <input type="checkbox" className="absolute top-2 right-2 border-none bg-primaryLight w-7 h-7 "></input>
+      <label className="label" htmlFor={`day-${i}`}>
+        Day
+      </label>
+      <input
+        className="input"
+        type="text"
+        name="day"
+        id={`day-${i}`}
+        value={item.day}
+        onChange={(e) => handleChange(e, i)}
+      />
+      <label className="label" htmlFor={`startTime-${i}`}>
+        Time
+      </label>
+      <div className="flex flex-row">
+        <input
+          className="input"
+          type="time"
+          name="startTime"
+          id={`startTime-${i}`}
+          value={item.startTime}
+          onChange={(e) => handleChange(e, i)}
+        />
+        <h1 className="text-xl mx-2 text-primaryLight">-</h1>
+        <input
+          className="input"
+          type="time"
+          name="endTime"
+          id={`endTime-${i}`}
+          value={item.endTime}
+          onChange={(e) => handleChange(e, i)}
+        />
       </div>
-      <InputItem name="course" handleChange={handleChange} i={i} item={item} checked={checked}/>
-      <InputItem name="group" handleChange={handleChange} i={i} item={item} checked={checked}/>
-      <InputItem name="room" handleChange={handleChange} i={i} item={item} checked={checked}/>
-      <InputItem name="addtitional" handleChange={handleChange} i={i} item={item} checked={checked}/>
+      <label className="label" htmlFor={`course-${i}`}>
+        Course
+      </label>
+      <input
+        className="input"
+        type="text"
+        name="course"
+        id={`course-${i}`}
+        value={item.course}
+        onChange={(e) => handleChange(e, i)}
+      />
+      <label className="label" htmlFor={`group-${i}`}>
+        Group
+      </label>
+      <input
+        className="input"
+        type="text"
+        name="group"
+        id={`group-${i}`}
+        value={item.group}
+        onChange={(e) => handleChange(e, i)}
+      />
+      <label className="label" htmlFor={`room-${i}`}>
+        Room
+      </label>
+      <input
+        className="input"
+        type="text"
+        name="room"
+        id={`room-${i}`}
+        value={item.room}
+        onChange={(e) => handleChange(e, i)}
+      />
+      <label className="label" htmlFor={`additional-${i}`}>
+        Additional Info
+      </label>
+      <input
+        className="input"
+        type="text"
+        name="additional"
+        id={`additional-${i}`}
+        value={item.additional}
+        onChange={(e) => handleChange(e, i)}
+      />
     </div>
   );
 };

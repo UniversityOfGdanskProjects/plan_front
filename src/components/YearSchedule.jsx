@@ -1,5 +1,5 @@
 import React from "react";
-import SubjectCard from "./SubjectCart";
+import SubjectCard from "./SubjectCard";
 
 const YearSchedule = () => {
   return <div></div>;

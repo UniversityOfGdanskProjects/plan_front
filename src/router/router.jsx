@@ -7,6 +7,7 @@ import App from "../App";
 import Calendar from "../components/Calendar";
 import WelcomePage from "../components/WelcomePage";
 import YearSchedule from "../components/YearSchedule";
+import DetailedSubjectPage from "../components/DetailedSubjectPage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +15,7 @@ export const router = createBrowserRouter(
       <Route path="" element={<WelcomePage />} />
       <Route path="kalendarz" element={<Calendar />} />
       <Route path="yearSchedule" element={<YearSchedule />} />
+      <Route path="detailedPage" element={<DetailedSubjectPage />} />
     </Route>
   )
 );

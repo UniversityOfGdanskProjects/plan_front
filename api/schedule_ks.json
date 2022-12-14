@@ -1,7 +1,10 @@
 {
-    "year": "2020/2021",
+    "id": "2020/2021",
     "semester": "1",
-    "schedule": {
+    "groups": {
+        id: "gr1",
+        users: {}
+        "schedule": {
         "Monday": {
             "8:00": {
                 "group": 1,
@@ -30,5 +33,6 @@
         "Friday": {
 
         }
+    }
     }
 }

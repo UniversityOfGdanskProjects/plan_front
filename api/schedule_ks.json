@@ -5,34 +5,32 @@
         id: "gr1",
         users: {}
         "schedule": {
-        "Monday": {
-            "8:00": {
-                "group": 1,
-                "subject": "matematyka elementarna",
-                "teacher": "rosicka monika",
-                "room": "3.11",
-                "endHour": "9:30"
+            "Monday": {
+                "8:00": {
+                    "subject": "matematyka elementarna",
+                    "teacher": "rosicka monika",
+                    "room": "3.11",
+                    "endHour": "9:30"
+                },
+                "9:30": {
+                    "subject": "matematyka elementarna",
+                    "teacher": "rosicka monika",
+                    "room": "3.11",
+                    "endHour": "11:00"
+                }
             },
-            "9:30": {
-                "group": 1,
-                "subject": "matematyka elementarna",
-                "teacher": "rosicka monika",
-                "room": "3.11",
-                "endHour": "11:00"
+            "Thursday": {
+
+            },
+            "Wednesday": {
+
+            },
+            "Tuesday": {
+
+            },
+            "Friday": {
+
             }
-        },
-        "Thursday": {
-
-        },
-        "Wednesday": {
-
-        },
-        "Tuesday": {
-
-        },
-        "Friday": {
-
         }
-    }
     }
 }
